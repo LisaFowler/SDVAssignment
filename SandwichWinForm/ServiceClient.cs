@@ -16,5 +16,13 @@ namespace SandwichWinForm
                 return JsonConvert.DeserializeObject<List<string>>
                     (await lcHttpClient.GetStringAsync("http://localhost:60064/api/Sandwich/GetChefNames/"));
         }
+
+        internal async static Task<clsChef> GetChefNamesAsync(string prChefName)
+        {
+            using (HttpClient lcHttpClient = new HttpClient())
+                return JsonConvert.DeserializeObject<clsChef>
+                    (await lcHttpClient.GetStringAsync("http://localhost:60064/api/Sandwich/GetChef?Name=" + prChefName));
+                throw new NotImplementedException();
+        }
     }
 }

@@ -28,34 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblValue = new System.Windows.Forms.Label();
             this.Label2 = new System.Windows.Forms.Label();
             this.btnQuit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.Label1 = new System.Windows.Forms.Label();
             this.lstChef = new System.Windows.Forms.ListBox();
-            this.btnGalName = new System.Windows.Forms.Button();
+            this.lblQty = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // lblValue
-            // 
-            this.lblValue.Location = new System.Drawing.Point(87, 221);
-            this.lblValue.Name = "lblValue";
-            this.lblValue.Size = new System.Drawing.Size(68, 16);
-            this.lblValue.TabIndex = 13;
             // 
             // Label2
             // 
-            this.Label2.Location = new System.Drawing.Point(17, 221);
+            this.Label2.Location = new System.Drawing.Point(44, 169);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(64, 16);
             this.Label2.TabIndex = 12;
-            this.Label2.Text = "Total Value";
+            this.Label2.Text = "Total Qty";
             // 
             // btnQuit
             // 
-            this.btnQuit.Location = new System.Drawing.Point(164, 211);
+            this.btnQuit.Location = new System.Drawing.Point(164, 118);
             this.btnQuit.Name = "btnQuit";
             this.btnQuit.Size = new System.Drawing.Size(80, 32);
             this.btnQuit.TabIndex = 11;
@@ -92,26 +84,23 @@
             // 
             this.lstChef.Location = new System.Drawing.Point(17, 29);
             this.lstChef.Name = "lstChef";
-            this.lstChef.Size = new System.Drawing.Size(136, 173);
+            this.lstChef.Size = new System.Drawing.Size(136, 121);
             this.lstChef.TabIndex = 7;
             this.lstChef.DoubleClick += new System.EventHandler(this.lstChef_DoubleClick);
             // 
-            // btnGalName
+            // lblQty
             // 
-            this.btnGalName.Location = new System.Drawing.Point(164, 170);
-            this.btnGalName.Name = "btnGalName";
-            this.btnGalName.Size = new System.Drawing.Size(80, 32);
-            this.btnGalName.TabIndex = 14;
-            this.btnGalName.Text = "Gal. Name";
-            //this.btnGalName.Click += new System.EventHandler(this.btnGalName_Click);
+            this.lblQty.Location = new System.Drawing.Point(130, 169);
+            this.lblQty.Name = "lblQty";
+            this.lblQty.Size = new System.Drawing.Size(68, 16);
+            this.lblQty.TabIndex = 13;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(256, 253);
-            this.Controls.Add(this.btnGalName);
-            this.Controls.Add(this.lblValue);
+            this.ClientSize = new System.Drawing.Size(256, 206);
+            this.Controls.Add(this.lblQty);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.btnDelete);
@@ -126,14 +115,12 @@
         }
 
         #endregion
-
-        internal System.Windows.Forms.Label lblValue;
         internal System.Windows.Forms.Label Label2;
         internal System.Windows.Forms.Button btnQuit;
         internal System.Windows.Forms.Button btnDelete;
         internal System.Windows.Forms.Button btnAdd;
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.ListBox lstChef;
-        internal System.Windows.Forms.Button btnGalName;
+        internal System.Windows.Forms.Label lblQty;
     }
 }

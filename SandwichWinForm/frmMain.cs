@@ -17,7 +17,12 @@ namespace SandwichWinForm
         public frmMain()
         {
             InitializeComponent();
-        }        
+        }
+
+        public static frmMain Instance
+        {
+            get { return frmMain._Instance; }
+        }    
 
         public async void UpdateDisplay()
         {
@@ -36,7 +41,7 @@ namespace SandwichWinForm
         {
             try
             {
-                //frmArtist.Run(new clsArtist(_ArtistList));
+                //frmChef.Run(new clsChef(_ChefList));
             }
             catch (Exception ex)
             {
@@ -46,18 +51,20 @@ namespace SandwichWinForm
 
         private void lstChef_DoubleClick(object sender, EventArgs e)
         {
-            /*string lcKey;
+            string lcKey;
 
-            lcKey = Convert.ToString(lstArtists.SelectedItem);
+            lcKey = Convert.ToString(lstChef.SelectedItem);
             if (lcKey != null)
+            {
                 try
                 {
-                    frmArtist.Run(_ArtistList[lcKey]);
+                    frmChef.Run(lstChef.SelectedItem as string);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "This should never occur");
-                }*/
+                }
+            }
         }
 
         private void btnQuit_Click(object sender, EventArgs e)
@@ -87,6 +94,6 @@ namespace SandwichWinForm
         private void frmMain_Load(object sender, EventArgs e)
         {            
             UpdateDisplay();            
-        }        
+        }      
     }
 }
