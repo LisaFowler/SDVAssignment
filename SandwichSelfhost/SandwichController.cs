@@ -19,7 +19,7 @@ namespace SandwichSelfHost
             return lcChefNames;
         }
 
-        public List<clsChef> GetChef() 
+        public List<clsChef> GetChef()
         {
             DataTable lcResult = clsDbConnection.GetDataTable("SELECT * FROM Chef", null);
             List<clsChef> lcChef = new List<clsChef>();
@@ -43,10 +43,10 @@ namespace SandwichSelfHost
             if (lcResult.Rows.Count > 0)
                 return new clsChef()
                 {
-                    ChefName = (string)lcResult.Rows[0]["ChefName"],                    
+                    ChefName = (string)lcResult.Rows[0]["ChefName"],
                     Specialty = (string)lcResult.Rows[0]["Specialty"],
-                    SandwichList = getChefSandwiches(ChefName)        
-                    
+                    SandwichList = getChefSandwiches(ChefName)
+
                 };
             else
                 return null;
@@ -60,7 +60,7 @@ namespace SandwichSelfHost
             List<clsAllSandwiches> lcSandwich = new List<clsAllSandwiches>();
             foreach (DataRow dr in lcResult.Rows)
                 lcSandwich.Add(dataRow2AllSandwiches(dr));
-            return lcSandwich; 
+            return lcSandwich;
         }
 
         private clsAllSandwiches dataRow2AllSandwiches(DataRow dr)
@@ -80,7 +80,7 @@ namespace SandwichSelfHost
         }
 
         public string PutChef(clsChef prChef)
-        {   
+        {
             try
             {
                 int lcRecCount = clsDbConnection.Execute(
@@ -118,12 +118,42 @@ namespace SandwichSelfHost
 
         private static Dictionary<string, object> prepareChefParameters(clsChef prChef)
         {
-            Dictionary<string, object> par = new Dictionary<string, object>(2);            
+            Dictionary<string, object> par = new Dictionary<string, object>(2);
             par.Add("ChefName", prChef.ChefName);
             par.Add("Specialty", prChef.Specialty);
             return par;
         }
 
+        /*public string PostSandwich(clsAllSandwiches prSandwich)
+        {
+            try
+            {
+                int lcRecCount = clsDbConnection.Execute("INSERT INTO Sandwich " +
+                    "(SandwichName, Filling, Filling2, Filling3, Sauce, Type, Price, Quantity, ChefName)" + 
+                    "VALUES (@SandwichName, @Filling, @Filling2, @Filling3, @Sauce, @Type, @Price, @Quantity, @ChefName)",
+                    prepareSandwichParameters(prSandwich));
+                if (lcRecCount == 1)
+                    return "Sandwich Added";
+                else
+                    return "Unexpected Sandwich insert count" + lcRecCount;
+            }
+            catch (Exception ex)
+            {
+                return ex.GetBaseException().Message;
+            }
+        }
+        private static Dictionary<string, object> prepareSandwichParameters(clsAllSandwiches prSandwich)
+        {
+            Dictionary<string, object> par = new Dictionary<string, object>(9);
+            par.Add("SandwichName", prSandwich.SandwichName);
+            par.Add("Filling", prSandwich.Filling);
+            par.Add("Filling2", prSandwich.Filling2);
+            par.Add("Filling3", prSandwich.Filling3);
+            par.Add("Sauce", prSandwich.Sauce);
+            par.Add("Type", prSandwich.Type);
+            par.Add("Price", prSandwich.Price);
+            par.Add("Quantity", prSandwich.Quantity);
+            par.Add("ChefName", prSandwich.ChefName);
+        } */       
     }
-
 }

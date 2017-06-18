@@ -34,7 +34,7 @@ namespace SandwichWinForm
 
         public override string ToString()
         {
-            return SandwichName;
+            return SandwichName;  
         }
 
         public static readonly string FACTORY_PROMPT = "Enter V for Vegetarian or S for Spicy";

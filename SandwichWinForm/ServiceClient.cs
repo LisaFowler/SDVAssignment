@@ -22,9 +22,9 @@ namespace SandwichWinForm
             using (HttpClient lcHttpClient = new HttpClient())
                 return JsonConvert.DeserializeObject<clsChef>
                     (await lcHttpClient.GetStringAsync("http://localhost:60064/api/Sandwich/GetChef?ChefName=" + prChefName));
-                throw new NotImplementedException();
+            throw new NotImplementedException();
         }
-        
+
         internal async static Task<string> InsertChefAsync(clsChef _Chef)
         {
             return await InsertOrUpdateAsync(_Chef, "http://localhost:60064/api/Sandwich/PostChef", "POST");
