@@ -37,20 +37,22 @@ namespace SandwichWinForm
             this.Label2 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblChefId = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(171, 185);
+            this.btnClose.Location = new System.Drawing.Point(155, 218);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(64, 32);
             this.btnClose.TabIndex = 24;
             this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click_1);
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(94, 185);
+            this.btnDelete.Location = new System.Drawing.Point(85, 218);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(64, 32);
             this.btnDelete.TabIndex = 23;
@@ -59,7 +61,7 @@ namespace SandwichWinForm
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(12, 185);
+            this.btnAdd.Location = new System.Drawing.Point(15, 218);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(64, 32);
             this.btnAdd.TabIndex = 22;
@@ -68,7 +70,7 @@ namespace SandwichWinForm
             // 
             // Label4
             // 
-            this.Label4.Location = new System.Drawing.Point(11, 66);
+            this.Label4.Location = new System.Drawing.Point(12, 111);
             this.Label4.Name = "Label4";
             this.Label4.Size = new System.Drawing.Size(80, 16);
             this.Label4.TabIndex = 21;
@@ -76,21 +78,21 @@ namespace SandwichWinForm
             // 
             // lstSandwich
             // 
-            this.lstSandwich.Location = new System.Drawing.Point(11, 85);
+            this.lstSandwich.Location = new System.Drawing.Point(15, 130);
             this.lstSandwich.Name = "lstSandwich";
-            this.lstSandwich.Size = new System.Drawing.Size(224, 82);
+            this.lstSandwich.Size = new System.Drawing.Size(217, 82);
             this.lstSandwich.TabIndex = 20;
             // 
-            // txtSpeciality
+            // txtSpecialty
             // 
-            this.txtSpecialty.Location = new System.Drawing.Point(75, 33);
-            this.txtSpecialty.Name = "txtSpeciality";
-            this.txtSpecialty.Size = new System.Drawing.Size(160, 20);
+            this.txtSpecialty.Location = new System.Drawing.Point(75, 76);
+            this.txtSpecialty.Name = "txtSpecialty";
+            this.txtSpecialty.Size = new System.Drawing.Size(157, 20);
             this.txtSpecialty.TabIndex = 17;
             // 
             // Label2
             // 
-            this.Label2.Location = new System.Drawing.Point(11, 33);
+            this.Label2.Location = new System.Drawing.Point(12, 80);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(64, 16);
             this.Label2.TabIndex = 16;
@@ -98,25 +100,42 @@ namespace SandwichWinForm
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(75, 9);
+            this.txtName.Location = new System.Drawing.Point(75, 46);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(160, 20);
+            this.txtName.Size = new System.Drawing.Size(157, 20);
             this.txtName.TabIndex = 15;
             // 
             // Label1
             // 
-            this.Label1.Location = new System.Drawing.Point(11, 9);
+            this.Label1.Location = new System.Drawing.Point(28, 53);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(64, 16);
             this.Label1.TabIndex = 14;
-            this.Label1.Text = "Name";
+            this.Label1.Text = "ChefName";
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(41, 23);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 16);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "ID";
+            // 
+            // lblChefId
+            // 
+            this.lblChefId.Location = new System.Drawing.Point(72, 23);
+            this.lblChefId.Name = "lblChefId";
+            this.lblChefId.Size = new System.Drawing.Size(80, 16);
+            this.lblChefId.TabIndex = 28;
             // 
             // frmChef
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(256, 232);
+            this.ClientSize = new System.Drawing.Size(256, 262);
             this.ControlBox = false;
+            this.Controls.Add(this.lblChefId);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
@@ -128,6 +147,7 @@ namespace SandwichWinForm
             this.Controls.Add(this.Label1);
             this.Name = "frmChef";
             this.Text = "Chef Details";
+            this.Load += new System.EventHandler(this.frmChef_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,5 +163,7 @@ namespace SandwichWinForm
         internal System.Windows.Forms.Label Label2;
         internal System.Windows.Forms.TextBox txtName;
         internal System.Windows.Forms.Label Label1;
+        internal System.Windows.Forms.Label label3;
+        internal System.Windows.Forms.Label lblChefId;
     }
 }

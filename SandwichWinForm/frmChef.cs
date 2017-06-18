@@ -6,7 +6,8 @@ namespace SandwichWinForm
 {
     public partial class frmChef : Form
     {
-        private clsChef _Chef;      
+        private clsChef _Chef;
+        //private string _ChefDisplay;    
         //private clsSandwichList _SandwichList;
 
         private static Dictionary<string, frmChef> _ChefFormList = 
@@ -33,7 +34,6 @@ namespace SandwichWinForm
                     _ChefFormList.Add(prChefName, lcChefForm);
                     lcChefForm.refreshFormFromDB(prChefName);
                 }
-
             }
             else
             {
@@ -46,8 +46,7 @@ namespace SandwichWinForm
         {
             try
             {
-                SetDetails(await ServiceClient.GetChefNamesAsync(prChefName));
-                //throw new NotImplementedException();
+                SetDetails(await ServiceClient.GetChefNamesAsync(prChefName));                
             }
             catch (Exception ex)
             {
@@ -58,18 +57,19 @@ namespace SandwichWinForm
         private void updateTitle(string prSandwichName)
         {
             if (!string.IsNullOrEmpty(prSandwichName))
-                Text = "Chef Details - " + prSandwichName;
+                Text = "Chef Details, " + prSandwichName;
         }
-
-
 
         private void UpdateDisplay()
         {
+            lstSandwich.DataSource = null;
+            if (_Chef.SandwichList != null)
+                lstSandwich.DataSource = _Chef.SandwichList;
         }
 
         public void UpdateForm()
         {
-            txtName.Text = _Chef.Name;
+            txtName.Text = _Chef.ChefName;
             txtSpecialty.Text = _Chef.Specialty;
             //txtPhone.Text = _Chef.Phone;
            // _SandwichList = _Chef.SandwichList;
@@ -81,33 +81,45 @@ namespace SandwichWinForm
         public void SetDetails(clsChef prChef)
         {
             _Chef = prChef;
-            txtName.Enabled = string.IsNullOrEmpty(_Chef.Name);
+            txtName.Enabled = string.IsNullOrEmpty(_Chef.ChefName);
             UpdateForm();
-           // UpdateDisplay();
+            UpdateDisplay();
             //frmMain.Instance.SandwichNameChanged += new frmMain.Notify(updateTitle);
             //updateTitle(_Chef.ChefList.SandwichName);
             Show();
         }
 
         private void pushData()
-        {
-            //_Chef.Name = txtName.Text;
-           // _Chef.Specialty = txtChef.Text;
-          //  _Chef.Phone = txtPhone.Text;
-            //_WorksList.SortOrder = _SortOrder; // no longer required, updated with each rbByDate_CheckedChanged
+        {           
+            _Chef.ChefName = txtName.Text;
+            _Chef.Specialty = txtSpecialty.Text;                       
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-           // string lcReply = new InputBox(clsSandwich.FACTORY_PROMPT).Answer;
-          //  if (!string.IsNullOrEmpty(lcReply))
-            {
-           //     _SandichList.AddWork(lcReply[0]);
-           //     UpdateDisplay();
-            //    frmMain.Instance.UpdateDisplay();
-            }
-        }
+            UpdateDisplay();
 
+            /*   string lcReply = new InputBox(clsSandwich.FACTORY_PROMPT).Answer;
+                 if (!string.IsNullOrEmpty(lcReply))
+                 {
+                     clsSandwiches lcSandwich = clsSandwiches.NewSandwich(lcReply[0]);
+                     if (lcSandwich != null)
+                     {
+                         if (txtName.Enabled)
+                         {
+                             pushData();
+                             await ServiceClient.InsertChefAsync(_Chef);
+                             txtName.Enabled = false;
+                         }
+                         lcSandwich.ChefName = _Chef.Name;
+                         frmSandwich.DispatchSandwichFrom(lcSandwich);
+                         if (!string.IsNullOrEmpty(lcSandwich.SandwichName))
+                         {
+                             refreshFormFromDB(_Chef.Name);
+                             frmMain.Instance.UpdateDisplay();*/
+
+        }
+     
         private void lstSandwich_DoubleClick(object sender, EventArgs e)
         {
             string lcKey;
@@ -136,38 +148,44 @@ namespace SandwichWinForm
              }*/
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private async void btnDelete_Click(object sender, EventArgs e)
         {
-           /* int lcIndex = lstSandwich.SelectedIndex;
+            int lcIndex = lstSandwich.SelectedIndex;
 
-            if (lcIndex >= 0 && MessageBox.Show("Are you sure?", "Deleting work", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (lcIndex >= 0 && MessageBox.Show("Are you sure?", "Deleting Sandwich", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                _SandwichList.RemoveAt(lcIndex);
-                UpdateDisplay();
+                MessageBox.Show(await ServiceClient.DeleteSandwichAsync(lstSandwich.SelectedItem as clsAllSandwiches));
+                refreshFormFromDB(_Chef.ChefName);
                 frmMain.Instance.UpdateDisplay();
-            }*/
+
+                //_SandwichList.RemoveAt(lcIndex);
+                //UpdateDisplay();
+                //frmMain.Instance.UpdateDisplay();
+            }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
+        /*private async void btnClose_Click(object sender, EventArgs e)
+        {   
             if (isValid() == true)
                 try
                 {
                     pushData();
                     if (txtName.Enabled)
                     {
-              //          _Chef.NewChef();
-                        MessageBox.Show("Chef added!", "Success");
-               //         frmMain.Instance.UpdateDisplay();
+                        MessageBox.Show(await ServiceClient.InsertChefAsync(_Chef));
+                        frmMain.Instance.UpdateDisplay();
                         txtName.Enabled = false;
                     }
-                    Hide();
+                else
+                    MessageBox.Show(await ServiceClient.UpdateChefAsync(_Chef));
+                Hide();
                 }
                 catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-        }
+            {
+                MessageBox.Show(ex.Message);               
+            }     
+
+        }*/
 
         private Boolean isValid()
         {
@@ -179,7 +197,33 @@ namespace SandwichWinForm
                 }
                 else*/
                     return true;            
-        }       
-      
+        }
+
+        private void frmChef_Load(object sender, EventArgs e)
+        {
+            UpdateDisplay();
+        }
+
+        private async void btnClose_Click_1(object sender, EventArgs e)
+        {
+            if (isValid() == true)
+                try
+                {
+                    pushData();
+                    if (txtName.Enabled)
+                    {
+                        MessageBox.Show(await ServiceClient.InsertChefAsync(_Chef));
+                        frmMain.Instance.UpdateDisplay();
+                        txtName.Enabled = false;
+                    }
+                    else
+                        MessageBox.Show(await ServiceClient.UpdateChefAsync(_Chef));
+                    Hide();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+        }
     }
 }

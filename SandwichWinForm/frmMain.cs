@@ -41,7 +41,7 @@ namespace SandwichWinForm
         {
             try
             {
-                //frmChef.Run(new clsChef(_ChefList));
+                frmChef.Run(null);
             }
             catch (Exception ex)
             {
@@ -77,17 +77,17 @@ namespace SandwichWinForm
            /* string lcKey;
 
             lcKey = Convert.ToString(lstArtists.SelectedItem);
-            if (lcKey != null && MessageBox.Show("Are you sure?", "Deleting artist", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (lcKey != null && MessageBox.Show("Are you sure?", "Deleting chef", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 try
                 {
-                    _ArtistList.Remove(lcKey);
-                    lstArtists.ClearSelected();
+                    _ChefList.Remove(lcKey);
+                    lstChef.ClearSelected();
                     UpdateDisplay();
 
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Error deleting artist");
+                    MessageBox.Show(ex.Message, "Error deleting chef");
                 }*/
         }
 

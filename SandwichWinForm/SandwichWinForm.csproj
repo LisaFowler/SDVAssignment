@@ -63,6 +63,12 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSandwich.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSandwich.Designer.cs">
+      <DependentUpon>frmSandwich.cs</DependentUpon>
+    </Compile>
     <Compile Include="InputBox.cs">
       <SubType>Form</SubType>
     </Compile>
