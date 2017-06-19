@@ -69,6 +69,18 @@
     <Compile Include="frmSandwich.Designer.cs">
       <DependentUpon>frmSandwich.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSpicy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSpicy.Designer.cs">
+      <DependentUpon>frmSpicy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVegetarian.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVegetarian.Designer.cs">
+      <DependentUpon>frmVegetarian.cs</DependentUpon>
+    </Compile>
     <Compile Include="InputBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +95,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSandwich.resx">
+      <DependentUpon>frmSandwich.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSpicy.resx">
+      <DependentUpon>frmSpicy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVegetarian.resx">
+      <DependentUpon>frmVegetarian.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InputBox.resx">
       <DependentUpon>InputBox.cs</DependentUpon>

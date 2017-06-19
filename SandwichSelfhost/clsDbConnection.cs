@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.Common;
 using System.Configuration;
 
+//Developed by Lisa Fowler using code originally developed by Matthias Otto
+//Date - 19/06/2017
 
 namespace SandwichSelfHost
 {

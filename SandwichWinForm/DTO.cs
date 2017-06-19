@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+//Developed by Lisa Fowler using code originally developed by Matthias Otto
+//Date - 19/06/2017
 
 namespace SandwichWinForm
 {
@@ -16,8 +16,7 @@ namespace SandwichWinForm
         public override string ToString()                 
         {
             return ChefName;
-        }
-        
+        }        
     }
 
     public class clsAllSandwiches
@@ -39,10 +38,10 @@ namespace SandwichWinForm
 
         public static readonly string FACTORY_PROMPT = "Enter V for Vegetarian or S for Spicy";
 
-        //public static clsAllSandwiches AddNewSandwich(char prChoice) 
-       // {
-            //return new clsAllSandwiches() { Type = char.ToUpper(prChoice) };
-        //}
+        public static clsAllSandwiches AddNewSandwich(char prChoice) 
+        {
+            return new clsAllSandwiches();
+        }
     }
 
     public class clsOrder

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 
+//Developed by Lisa Fowler using code originally developed by Matthias Otto
+
 namespace SandwichWinForm
 {
     public partial class InputBox : Form

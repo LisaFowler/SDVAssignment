@@ -2,6 +2,7 @@
 using System.Web.Http;
 using System.Web.Http.SelfHost;
 
+//Developed by Lisa Fowler using code originally developed by Matthias Otto
 
 namespace SandwichSelfHost
 {

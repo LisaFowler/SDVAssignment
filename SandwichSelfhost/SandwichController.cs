@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+//Developed by Lisa Fowler using code originally developed by Matthias Otto
+//Date - 19/06/2017
 
 namespace SandwichSelfHost
 {
@@ -45,8 +45,7 @@ namespace SandwichSelfHost
                 {
                     ChefName = (string)lcResult.Rows[0]["ChefName"],
                     Specialty = (string)lcResult.Rows[0]["Specialty"],
-                    SandwichList = getChefSandwiches(ChefName)
-
+                    SandwichList = getChefSandwiches(ChefName) 
                 };
             else
                 return null;
@@ -56,7 +55,7 @@ namespace SandwichSelfHost
         {
             Dictionary<string, object> par = new Dictionary<string, object>(1);
             par.Add("SandwichName", SandwichName);
-            DataTable lcResult = clsDbConnection.GetDataTable("SELECT * FROM Sandwich WHERE SandwichName = @SandwichName", par);
+            DataTable lcResult = clsDbConnection.GetDataTable("SELECT * FROM Sandwich WHERE ChefName = @ChefName", par);
             List<clsAllSandwiches> lcSandwich = new List<clsAllSandwiches>();
             foreach (DataRow dr in lcResult.Rows)
                 lcSandwich.Add(dataRow2AllSandwiches(dr));
@@ -124,7 +123,7 @@ namespace SandwichSelfHost
             return par;
         }
 
-        /*public string PostSandwich(clsAllSandwiches prSandwich)
+        public string PostSandwich(clsAllSandwiches prSandwich)
         {
             try
             {
@@ -145,15 +144,15 @@ namespace SandwichSelfHost
         private static Dictionary<string, object> prepareSandwichParameters(clsAllSandwiches prSandwich)
         {
             Dictionary<string, object> par = new Dictionary<string, object>(9);
-            par.Add("SandwichName", prSandwich.SandwichName);
+            par.Add("SandwichName", prSandwich.SandwichName); 
             par.Add("Filling", prSandwich.Filling);
             par.Add("Filling2", prSandwich.Filling2);
             par.Add("Filling3", prSandwich.Filling3);
-            par.Add("Sauce", prSandwich.Sauce);
+            par.Add("Sauce", prSandwich.Sauce); 
             par.Add("Type", prSandwich.Type);
             par.Add("Price", prSandwich.Price);
             par.Add("Quantity", prSandwich.Quantity);
             par.Add("ChefName", prSandwich.ChefName);
-        } */       
+        }       
     }
 }

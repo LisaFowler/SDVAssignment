@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
+//Developed by Lisa Fowler using code originally developed by Matthias Otto
+//Date - 19/06/2017
 
 namespace SandwichWinForm
 {
@@ -74,9 +70,9 @@ namespace SandwichWinForm
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-           /* string lcKey;
+            string lcKey;
 
-            lcKey = Convert.ToString(lstArtists.SelectedItem);
+            lcKey = Convert.ToString(lstChef.SelectedItem);
             if (lcKey != null && MessageBox.Show("Are you sure?", "Deleting chef", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 try
                 {
@@ -88,7 +84,7 @@ namespace SandwichWinForm
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Error deleting chef");
-                }*/
+                }
         }
 
         private void frmMain_Load(object sender, EventArgs e)

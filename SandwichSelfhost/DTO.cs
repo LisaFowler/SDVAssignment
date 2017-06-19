@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+//Developed by Lisa Fowler using code originally developed by Matthias Otto
 
 namespace SandwichSelfHost
 {
@@ -11,7 +10,12 @@ namespace SandwichSelfHost
         public string ChefName { get; set; }
         public string Specialty { get; set; }
 
-        public List<clsAllSandwiches> SandwichList { get; set; }       
+        public List<clsAllSandwiches> SandwichList { get; set; }
+
+        public override string ToString()
+        {
+            return ChefName;
+        }
 
     }
 
@@ -25,7 +29,19 @@ namespace SandwichSelfHost
         public string Type { get; set; }
         public decimal Price { get; set; }
         public int Quantity { get; set; }
-        public string ChefName { get; set; }   
+        public string ChefName { get; set; }
+
+        public override string ToString()
+        {
+            return SandwichName;
+        }
+
+        public static readonly string FACTORY_PROMPT = "Enter V for Vegetarian or S for Spicy";
+
+        //public static clsAllSandwiches AddNewSandwich(char prChoice) 
+        // {
+        //return new clsAllSandwiches() { Type = char.ToUpper(prChoice) };
+        //}
     }
 
     public class clsOrder
@@ -44,3 +60,4 @@ namespace SandwichSelfHost
 
 
 }
+
